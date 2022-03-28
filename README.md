@@ -64,3 +64,19 @@ graph TD
     C[top up] -->|True|D[balance increase]
     C[top] -->|False|E[raise error]
 ```
+
+
+`In order to pay for my journey
+As a customer
+I need my fare deducted from my card`
+
+|  Objects        |  Messages      |
+| ----------      | -------------  | 
+| Person  |                        |
+| Oystercard  |      deduct   |
+
+```mermaid
+graph TD
+    A[Person] -->B[Oystercard]
+    B[Oystercard] -->C[deduct]
+```

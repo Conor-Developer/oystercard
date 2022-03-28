@@ -8,10 +8,12 @@ class Oystercard
   end
 
   def top_up(amount)
-    if @balance + amount >= ACCOUNT_LIMIT
-      raise "Account limit of £#{ACCOUNT_LIMIT} exceeded"
-    else
-      @balance += amount
-    end
+    raise "Account limit of £#{ACCOUNT_LIMIT} exceeded" if @balance + amount >= ACCOUNT_LIMIT
+
+    @balance += amount
+  end
+
+  def deduct(amount)
+    @balance -= amount
   end
 end
