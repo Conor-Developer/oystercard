@@ -117,3 +117,19 @@ graph TD
     A[Person] -->B[Oystercard]
     B[Oystercard] -->C[touch_in: Raise Error]
 ```
+
+`In order to pay for my journey
+As a customer
+When my journey is complete, I need the correct amount deducted from my card`
+
+
+|  Objects        |  Messages      |
+| ----------      | -------------  | 
+| Person  |                        |
+| Oystercard  |      touch_out      |
+
+```mermaid
+graph TD
+    A[Person] -->B[Oystercard]
+    B[Oystercard] -->C[touch_out: balance reduction]
+```

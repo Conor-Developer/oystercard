@@ -3,6 +3,7 @@ class Oystercard
 
   ACCOUNT_LIMIT = 90
   MINIMUM_BALANCE = 1
+  MINIMUM_FARE = 1
 
   def initialize
     @balance = 0
@@ -15,10 +16,6 @@ class Oystercard
     @balance += amount
   end
 
-  def deduct(amount)
-    @balance -= amount
-  end
-
   def touch_in
     raise "Insufficient funds" if @balance < MINIMUM_BALANCE
     @card_status = 'in use' if in_journey? == false
@@ -26,9 +23,15 @@ class Oystercard
 
   def touch_out
     @card_status = 'not in use' if in_journey? == true
+    deduct(MINIMUM_FARE)
   end
 
   def in_journey?
     @card_status == 'in use'
+  end
+
+  private
+  def deduct(amount)
+    @balance -= amount
   end
 end
