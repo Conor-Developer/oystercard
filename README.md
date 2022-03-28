@@ -33,5 +33,17 @@ graph TD
     B[Oystercard] -->C[balance]
 ```
 
+`In order to keep using public transport
+As a customer
+I want to add money to my card`
 
+|  Objects        |  Messages      |
+| ----------      | -------------  | 
+| Person  |                        |
+| Oystercard  |      top up    |
 
+```mermaid
+graph TD
+    A[Person] -->B[Oystercard]
+    B[Oystercard] -->C[top up]
+```
