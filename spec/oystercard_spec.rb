@@ -14,4 +14,26 @@ describe Oystercard do
   it '#deduct - Reduce balance by the specified amount' do
     expect(subject.deduct(10)).to eq(-10)
   end
+
+  it '#touch_in - Changes travel state of card' do
+    subject.touch_in
+    expect(subject.card_status).to eq('in use')
+  end
+
+  it '#touch_out - Changes travel state of card' do
+    subject.touch_in
+    subject.touch_out
+    expect(subject.card_status).to eq('not in use')
+  end
+
+  it '#in_journey? - To return true ' do
+    subject.touch_in
+    expect(subject).to be_in_journey
+  end
+
+  it '#in_journey? - To return false ' do
+    subject.touch_in
+    subject.touch_out
+    expect(subject).not_to be_in_journey
+  end
 end

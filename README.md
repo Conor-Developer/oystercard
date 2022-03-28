@@ -80,3 +80,24 @@ graph TD
     A[Person] -->B[Oystercard]
     B[Oystercard] -->C[deduct]
 ```
+
+`In order to get through the barriers.
+As a customer
+I need to touch in and out.`
+
+
+|  Objects        |  Messages      |
+| ----------      | -------------  | 
+| Person  |                        |
+| Oystercard  |      touch_in, touch_out, in_journey?   |
+
+```mermaid
+graph TD
+    A[Person] -->B[Oystercard]
+    B[Oystercard] -->C[touch_in]
+    B[Oystercard] -->D[touch_out]
+    C[touch_in] --> E[in_journey?]
+    E[in_journey?] -->|true|B[Oystercard]
+    D[touch_out] --> F[in_journey?]
+    F[in_journey?] -->|false|B[Oystercard]
+```
