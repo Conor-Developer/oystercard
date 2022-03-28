@@ -101,3 +101,19 @@ graph TD
     D[touch_out] --> F[in_journey?]
     F[in_journey?] -->|false|B[Oystercard]
 ```
+
+`In order to pay for my journey
+As a customer
+I need to have the minimum amount (£1) for a single journey.`
+
+
+|  Objects        |  Messages      |
+| ----------      | -------------  | 
+| Person  |                        |
+| Oystercard  |      touch_in      |
+
+```mermaid
+graph TD
+    A[Person] -->B[Oystercard]
+    B[Oystercard] -->C[touch_in: Raise Error]
+```
