@@ -133,3 +133,21 @@ graph TD
     A[Person] -->B[Oystercard]
     B[Oystercard] -->C[touch_out: balance reduction]
 ```
+
+`In order to pay for my journey
+As a customer
+I need to know where I've travelled from`
+
+|  Objects        |  Messages      |
+| ----------      | -------------  | 
+| Person  |                        |
+| Oystercard  |      touch_out, entry_station      |
+
+```mermaid
+graph TD
+    A[Person] -->B[Oystercard]
+    B[Oystercard] --> E[touch_out]
+    E[touch_out] --> F["@entry_station = nil"]
+    B[Oystercard] -->C[touch_in]
+    C[touch_in] --> D["@entry_station = "station name""]
+```
