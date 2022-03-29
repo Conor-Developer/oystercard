@@ -1,4 +1,5 @@
 require_relative '../lib/oystercard'
+require_relative '../lib/station'
 
 describe Oystercard do
 
@@ -22,8 +23,8 @@ describe Oystercard do
 
   it '#in_journey? - To return false ' do
     subject.top_up(1)
-    subject.touch_in(station)
-    subject.touch_out
+    subject.touch_in(double(station_name: station, zone: station))
+    subject.touch_out(double(station_name: station, zone: station))
     expect(subject).not_to be_in_journey
   end
 
@@ -33,20 +34,20 @@ describe Oystercard do
 
   it '#touch_out - will reduce balance my minimum fare amount' do
     subject.top_up(1)
-    subject.touch_in(station)
-    expect {subject.touch_out}.to change {subject.balance}.by(-1)
+    subject.touch_in(double(station_name: station, zone: station))
+    expect { subject.touch_out(double(station_name: station, zone: station)) }.to change { subject.balance }.by(-1)
   end
 
   it '#touch_in - entry_station variable to return station location' do
     subject.top_up(1)
     subject.touch_in(station)
-    expect(subject).to have_attributes(:entry_station => station)
+    expect(subject).to have_attributes(entry_station: station)
   end
 
   it '#touch_out - entry_station variable to return nil' do
     subject.top_up(1)
-    subject.touch_in(station)
-    subject.touch_out
-    expect(subject).to have_attributes(:entry_station => nil)
+    subject.touch_in(double(station_name: station, zone: station))
+    subject.touch_out(double(station_name: station, zone: station))
+    expect(subject).to have_attributes(entry_station: nil)
   end
 end
