@@ -15,19 +15,6 @@ describe Oystercard do
     expect { subject.top_up(100) }.to raise_error('Account limit of £90 exceeded')
   end
 
-  it '#in_journey? - To return true ' do
-    subject.top_up(1)
-    subject.touch_in(station)
-    expect(subject).to be_in_journey
-  end
-
-  it '#in_journey? - To return false ' do
-    subject.top_up(1)
-    subject.touch_in(double(station_name: station, zone: station))
-    subject.touch_out(double(station_name: station, zone: station))
-    expect(subject).not_to be_in_journey
-  end
-
   it '#touch_in - raise error: Insufficient funds' do
     expect { subject.touch_in(station) }.to raise_error('Insufficient funds')
   end
@@ -38,16 +25,4 @@ describe Oystercard do
     expect { subject.touch_out(double(station_name: station, zone: station)) }.to change { subject.balance }.by(-1)
   end
 
-  it '#touch_in - entry_station variable to return station location' do
-    subject.top_up(1)
-    subject.touch_in(station)
-    expect(subject).to have_attributes(entry_station: station)
-  end
-
-  it '#touch_out - entry_station variable to return nil' do
-    subject.top_up(1)
-    subject.touch_in(double(station_name: station, zone: station))
-    subject.touch_out(double(station_name: station, zone: station))
-    expect(subject).to have_attributes(entry_station: nil)
-  end
 end
