@@ -11,6 +11,7 @@ class JourneyLog
   end
 
   def start(station) 
+    @current_journey[:exit_station] = nil
     @current_journey[:entry_station] = station
     @journey_class.enter_station(station)
   end

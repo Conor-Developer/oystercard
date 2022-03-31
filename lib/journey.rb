@@ -12,13 +12,13 @@ class Journey
   end
 
   def enter_station(enter_station)
-    @entry_station = enter_station
     @exit_station = nil
+    @entry_station = enter_station
   end
 
   def leave_station(exit_station)
-    @exit_station = exit_station
     @entry_station = nil
+    @exit_station = exit_station
   end
 
   def in_journey?
