@@ -21,8 +21,8 @@ describe Oystercard do
 
   it '#touch_out - will reduce balance my minimum fare amount' do
     subject.top_up(1)
-    subject.touch_in(double(station_name: station, zone: station))
-    expect { subject.touch_out(double(station_name: station, zone: station)) }.to change { subject.balance }.by(-1)
+    subject.touch_in(double(station_name: station, zone: 1))
+    expect { subject.touch_out(double(station_name: station, zone: 1)) }.to change { subject.balance }.by(-1)
   end
 
 end

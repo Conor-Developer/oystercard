@@ -2,7 +2,7 @@ require_relative 'journey'
 require_relative 'station'
 
 class JourneyLog
-  attr_reader :list_of_journeys
+  attr_reader :list_of_journeys, :cost, :journey_class
 
   def initialize(journey_class = Journey.new)
     @journey_class = journey_class
@@ -20,6 +20,7 @@ class JourneyLog
     @current_journey[:exit_station] = station
     add_journey_history
     @journey_class.leave_station(station)
+    price
   end
 
   def journeys
@@ -47,4 +48,7 @@ class JourneyLog
     @current_journey ||= journey_class.new
   end
 
+  def price
+    @cost = @journey_class.fare_cost
+  end
 end
