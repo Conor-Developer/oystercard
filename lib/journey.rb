@@ -27,9 +27,9 @@ class Journey
 
   def fare
     if in_journey?
-      PENALTY_FARE
+      @fare_cost = PENALTY_FARE
     else
-      MINIMUM_FARE
+      @fare_cost = (@entry_station.zone - @exit_station.zone).abs + MINIMUM_FARE
     end
   end
 

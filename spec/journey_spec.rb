@@ -3,6 +3,7 @@ require_relative '../lib/journey'
 describe Journey do
 
   let(:station) { double "station", station_name: "station", zone: 1}
+  let(:station2) { double "station", station_name: "station", zone: 2}
 
   it '#entry_station - Logs entry station' do
     subject.enter_station(station)
@@ -36,4 +37,9 @@ describe Journey do
     expect(subject.fare).to eq(6)
   end
 
+  it '#fare - Charges more with different zones' do
+    subject.enter_station(station)
+    subject.leave_station(station2)
+    expect(subject.fare).to eq 2
+  end
 end
