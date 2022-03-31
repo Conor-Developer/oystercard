@@ -151,3 +151,38 @@ graph TD
     B[Oystercard] -->C[touch_in]
     C[touch_in] --> D["@entry_station = "station name""]
 ```
+
+
+'In order to know where I have been
+As a customer
+I want to see to all my previous trips'
+
+|  Objects        |  Messages      |
+| ----------      | -------------  | 
+| Person  |                        |
+| Oystercard  |  add_journey_history, print_journey_history |
+
+```mermaid
+graph TD
+    A[Person] -->B[Oystercard]
+    B[Oystercard] --> E[#add_journey_history]
+    E[#add_history_journeys] --> F[#print_journey_history]
+```
+
+
+'In order to know how far I have travelled
+As a customer
+I want to know what zone a station is in'
+
+|  Objects        |  Messages      |
+| ----------      | -------------  | 
+| Person  |                        |
+| Oystercard  |                    |
+| Station  |     zone               |
+
+```mermaid
+graph TD
+    A[Person] -->B[Oystercard]
+    B[Oystercard] --> E[Station]
+    E[Station] --> F[zone]
+```
