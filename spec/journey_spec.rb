@@ -25,18 +25,6 @@ describe Journey do
   end
   
 
-  it '#add_journey_history - Logs journeys' do
-    subject.enter_station(station)
-    subject.leave_station(station)
-    expect(subject.list_of_journeys).to eq([{["station", "1"]=>["station", "1"]}])
-  end
-
-  it '#print_list_of_journeys' do
-    subject.enter_station(station)
-    subject.leave_station(station)
-    expect { subject.print_journey_history }.to output("Start of journey:\nStation: #{station.station_name}, Zone: #{station.zone}\nEnd of journey:\nStation: #{station.station_name}, Zone: #{station.zone}\n").to_stdout
-  end
-
   it '#fare - charge minimum fare upon journey completion' do
     subject.enter_station(station)
     subject.leave_station(station)
